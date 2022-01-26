@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GoalsController < ApplicationController
   def create
     goal = Goal.create(permitted_params)
@@ -5,7 +7,7 @@ class GoalsController < ApplicationController
     if goal.valid?
       render json: goal
     else
-      render json: {status: "error", code: 404}
+      render json: { status: "error", code: 404 }
     end
   end
 
