@@ -7,13 +7,13 @@ class GoalsController < ApplicationController
     if goal.valid?
       render json: goal, status: :created
     else
-      render json: { status: "error", code: 404 }
+      render json: goal.errors, status: :bad_request
     end
   end
 
   private
 
   def permitted_params
-    params.require(:goal).permit(:title)
+    params.require(:goal).permit(:title, :start_date, :end_date)
   end
 end
