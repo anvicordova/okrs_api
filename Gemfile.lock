@@ -195,6 +195,8 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     sqlite3 (1.4.2)
     strscan (3.0.1)
     thor (1.2.1)
@@ -219,6 +221,7 @@ DEPENDENCIES
   rails (~> 7.0.1)
   rspec-rails
   rubocop-rails
+  shoulda-matchers
   sqlite3 (~> 1.4)
   tzinfo-data
 

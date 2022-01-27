@@ -51,3 +51,7 @@ group :development do
   gem "rspec-rails"
   gem "rubocop-rails"
 end
+
+group :test do
+  gem "shoulda-matchers"
+end
