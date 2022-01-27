@@ -5,7 +5,7 @@ class GoalsController < ApplicationController
     goal = Goal.create(permitted_params)
 
     if goal.valid?
-      render json: goal
+      render json: goal, status: :created
     else
       render json: { status: "error", code: 404 }
     end
