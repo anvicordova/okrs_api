@@ -5,6 +5,8 @@ class Goal < ApplicationRecord
   validates :start_date, :end_date, presence: true, allow_blank: false
   validate :end_date_is_after_start_date
 
+  has_many :key_results
+
   private
 
   def end_date_is_after_start_date

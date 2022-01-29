@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_220_126_213_003) do
+ActiveRecord::Schema.define(version: 20_220_127_205_850) do
   create_table "goals", force: :cascade do |t|
     t.string "title", limit: 180, null: false
     t.datetime "start_date", precision: 6, null: false
@@ -20,4 +20,16 @@ ActiveRecord::Schema.define(version: 20_220_126_213_003) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
+  create_table "key_results", force: :cascade do |t|
+    t.string "title", limit: 180, null: false
+    t.datetime "started_at", precision: 6
+    t.datetime "completed_at", precision: 6
+    t.integer "goal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["goal_id"], name: "index_key_results_on_goal_id"
+  end
+
+  add_foreign_key "key_results", "goals"
 end
