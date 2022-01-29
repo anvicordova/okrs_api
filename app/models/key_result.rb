@@ -3,11 +3,10 @@
 class KeyResult < ApplicationRecord
   validates :title, presence: true, length: { maximum: 180 }, allow_blank: false
 
-  belongs_to :goal
+  scope :in_progress, -> { where.not(started_at: nil).where(completed_at: nil) }
+  scope :completed, -> { where.not(completed_at: nil) }
 
-  def started?
-    started_at.nil?
-  end
+  belongs_to :goal
 
   def in_progress?
     started_at.present? && completed_at.nil?

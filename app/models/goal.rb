@@ -7,6 +7,12 @@ class Goal < ApplicationRecord
 
   has_many :key_results
 
+  def progress
+    return 0.0 if key_results.blank?
+
+    (key_results.completed.count / key_results.count.to_f).round(2)
+  end
+
   private
 
   def end_date_is_after_start_date
