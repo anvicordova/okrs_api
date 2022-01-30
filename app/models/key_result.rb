@@ -8,6 +8,16 @@ class KeyResult < ApplicationRecord
 
   belongs_to :goal
 
+  def status
+    if in_progress?
+      :in_progress
+    elsif completed?
+      :completed
+    else
+      :non_started
+    end
+  end
+
   def in_progress?
     started_at.present? && completed_at.nil?
   end

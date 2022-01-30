@@ -49,4 +49,24 @@ RSpec.describe KeyResult, type: :model do
       end
     end
   end
+
+  describe "#status" do
+    context "When the key result has not started" do
+      let!(:kr) { create(:key_result) }
+
+      it { expect(kr.status).to eq :non_started }
+    end
+
+    context "When the key result is in progress" do
+      let!(:kr) { create(:key_result, :in_progress) }
+
+      it { expect(kr.status).to eq :in_progress }
+    end
+
+    context "When the key result is completed" do
+      let!(:kr) { create(:key_result, :completed) }
+
+      it { expect(kr.status).to eq :completed }
+    end
+  end
 end
