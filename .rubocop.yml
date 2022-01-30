@@ -11,6 +11,7 @@ Style/StringLiterals:
 Style/Documentation:
   Enabled: false
 
-etrics/BlockLength:
+Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+    - 'db/schema.rb'
