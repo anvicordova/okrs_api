@@ -2,9 +2,10 @@
 
 class GoalsController < ApplicationController
   def create
-    goal = Goal.create(permitted_params)
+    goal = Goal.new(permitted_params)
+    goal.owner = current_user
 
-    if goal.valid?
+    if goal.save
       render json: goal, status: :created
     else
       render json: goal.errors, status: :bad_request
