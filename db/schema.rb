@@ -15,8 +15,8 @@
 ActiveRecord::Schema.define(version: 20_220_129_203_139) do
   create_table "goals", force: :cascade do |t|
     t.string "title", limit: 180, null: false
-    t.datetime "start_date", precision: 6, null: false
-    t.datetime "end_date", precision: 6, null: false
+    t.datetime "start_date", precision: 6
+    t.datetime "end_date", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "owner_id"
