@@ -2,10 +2,10 @@
 
 class Goal < ApplicationRecord
   validates :title, presence: true, length: { maximum: 180 }, allow_blank: false
-  validates :start_date, :end_date, presence: true, allow_blank: false
   validate :end_date_is_after_start_date
 
   has_many :key_results
+  belongs_to :owner, class_name: "User"
 
   def progress
     return 0.0 if key_results.blank?
