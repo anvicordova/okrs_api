@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class GoalsController < ApplicationController
+  before_action :set_goal_owner, only: [:create]
+
   def create
     goal = Goal.new(permitted_params)
-    goal.owner = current_user
+    goal.owner = @owner
 
     if goal.save
       render json: goal, status: :created
@@ -13,6 +15,14 @@ class GoalsController < ApplicationController
   end
 
   private
+
+  def set_goal_owner
+    @owner = User.find_by(id: owner_params[:owner_id]) || current_user
+  end
+
+  def owner_params
+    params.require(:goal).permit(:owner_id)
+  end
 
   def permitted_params
     params.require(:goal).permit(:title, :start_date, :end_date)

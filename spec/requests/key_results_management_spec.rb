@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe "Goal management", type: :request do
-  let(:user) { create(:user) }
+  let(:current_user) { create(:user) }
   let(:headers) { valid_headers }
   let!(:goal) { create(:goal) }
 
