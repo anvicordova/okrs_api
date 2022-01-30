@@ -3,6 +3,11 @@
 class GoalsController < ApplicationController
   before_action :set_goal_owner, only: [:create]
 
+  def index
+    goals = Goal.where(owner: current_user)
+    render json: goals, status: :ok
+  end
+
   def create
     goal = Goal.new(permitted_params)
     goal.owner = @owner
