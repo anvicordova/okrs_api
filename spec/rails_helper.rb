@@ -8,6 +8,8 @@ require_relative "../config/environment"
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
 require "factory_bot"
+Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -47,6 +49,8 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.include AuthSpecHelper
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
