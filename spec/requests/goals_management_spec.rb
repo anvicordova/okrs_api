@@ -20,11 +20,11 @@ RSpec.describe "Goal management", type: :request do
     it "returns the goals of the current user" do
       get "/goals", headers: headers
 
-      json_response = JSON.parse(response.body)
+      json_response = JSON.parse(response.body)["data"]
 
       aggregate_failures do
         expect(json_response.size).to eq(3)
-        expect(json_response.pluck("id")).to match_array(goals.pluck(:id))
+        expect(json_response.pluck("id")).to match_array(goals.pluck(:id).map(&:to_s))
       end
     end
   end

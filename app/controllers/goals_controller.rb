@@ -4,8 +4,8 @@ class GoalsController < ApplicationController
   before_action :set_goal_owner, only: [:create]
 
   def index
-    goals = Goal.where(owner: current_user)
-    render json: goals, status: :ok
+    goals = Goal.where(owner: current_user).includes(:key_results)
+    render jsonapi: goals, status: :ok
   end
 
   def create
@@ -13,7 +13,7 @@ class GoalsController < ApplicationController
     goal.owner = @owner
 
     if goal.save
-      render json: goal, status: :created
+      render jsonapi: goal, status: :created
     else
       render json: goal.errors, status: :bad_request
     end

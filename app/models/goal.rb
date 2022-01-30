@@ -13,6 +13,9 @@ class Goal < ApplicationRecord
     (key_results.completed.count / key_results.count.to_f).round(2)
   end
 
+  def progress_percentage
+    progress * 100
+  end
   private
 
   def end_date_is_after_start_date
