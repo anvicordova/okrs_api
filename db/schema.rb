@@ -31,5 +31,13 @@ ActiveRecord::Schema.define(version: 20_220_127_205_850) do
     t.index ["goal_id"], name: "index_key_results_on_goal_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "goals", "users", column: "owner_id"
   add_foreign_key "key_results", "goals"
 end
