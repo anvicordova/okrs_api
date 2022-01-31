@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_220_129_203_139) do
+ActiveRecord::Schema.define(version: 20_220_131_173_712) do
   create_table "goals", force: :cascade do |t|
     t.string "title", limit: 180, null: false
     t.datetime "start_date", precision: 6
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20_220_129_203_139) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "owner_id"
+    t.decimal "progress", default: "0.0", null: false
     t.index ["owner_id"], name: "index_goals_on_owner_id"
   end
 

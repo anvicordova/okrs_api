@@ -7,19 +7,18 @@ class Goal < ApplicationRecord
   validate :end_date_is_after_start_date
 
   has_many :key_results
+
   belongs_to :owner, class_name: "User"
-
-  def progress
-    return 0.0 if key_results.blank?
-
-    (key_results.completed.count / key_results.count.to_f).round(2)
-  end
 
   def progress_percentage
     progress * 100
   end
 
   private
+
+  def update_goal_progress
+    UpdateGoalProgressWorker.perform_async(id)
+  end
 
   def end_date_is_after_start_date
     return if end_date.blank? || start_date.blank?
