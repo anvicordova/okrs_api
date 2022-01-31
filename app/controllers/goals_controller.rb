@@ -5,7 +5,7 @@ class GoalsController < ApplicationController
 
   def index
     goals = Goal.where(owner: current_user).includes(:key_results)
-    render jsonapi: goals, status: :ok
+    render jsonapi: goals, include: [:key_results], status: :ok
   end
 
   def create
