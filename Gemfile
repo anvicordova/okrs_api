@@ -33,8 +33,8 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "bootsnap", require: false
 
 gem "bcrypt", "~> 3.1.7"
-gem "jwt"
 gem "jsonapi-rails"
+gem "jwt"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
