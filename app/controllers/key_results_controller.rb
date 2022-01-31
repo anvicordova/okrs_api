@@ -4,12 +4,12 @@ class KeyResultsController < ApplicationController
   before_action :set_goal, only: [:create]
 
   def create
-    kr = @goal.key_results.new(permitted_params)
+    key_result = @goal.key_results.new(permitted_params)
 
-    if kr.valid?
-      render json: kr, status: :created
+    if key_result.save
+      render jsonapi: key_result, status: :created
     else
-      render json: { errors: kr.errors }, status: :bad_request
+      render json: { errors: key_result.errors }, status: :bad_request
     end
   end
 
