@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+1. `bundle install`
+2. `bundle exec sidekiq`
+3. `rails s` (In other terminal)
 
-* Ruby version
+## Endpoints
 
-* System dependencies
+POST /goals
+POST /goals/:id/key_results
+GET /goals
 
-* Configuration
+## Authentication
 
-* Database creation
+Based on JWT. To generate a token for testing you can do the following
 
-* Database initialization
+1. Go to the rails console `rails c`
+2. `JsonWebToken.encode(user_id: User.first.id)`
+3. Add the following headers to your request:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Authorization  <token>
+Content-Type  application/json
