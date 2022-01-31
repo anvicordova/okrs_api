@@ -4,7 +4,7 @@ class Goal < ApplicationRecord
   paginates_per 10
 
   validates :title, presence: true, length: { maximum: 180 }, allow_blank: false
-  validate :end_date_is_after_start_date
+  validate :ended_at_is_after_started_at
 
   has_many :key_results
 
@@ -20,9 +20,9 @@ class Goal < ApplicationRecord
     UpdateGoalProgressWorker.perform_async(id)
   end
 
-  def end_date_is_after_start_date
-    return if end_date.blank? || start_date.blank?
+  def ended_at_is_after_started_at
+    return if ended_at.blank? || started_at.blank?
 
-    errors.add(:end_date, "can't be before to start_date") if end_date < start_date
+    errors.add(:ended_at, "can't be before to started_at") if ended_at < started_at
   end
 end
