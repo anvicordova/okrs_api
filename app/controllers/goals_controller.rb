@@ -4,7 +4,11 @@ class GoalsController < ApplicationController
   before_action :set_goal_owner, only: [:create]
 
   def index
-    goals = Goal.where(owner: current_user).includes(:key_results)
+    goals = Goal
+            .where(owner: current_user)
+            .includes(:key_results)
+            .page(params[:page])
+
     render jsonapi: goals, include: [:key_results], status: :ok
   end
 

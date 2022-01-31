@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Goal < ApplicationRecord
+  paginates_per 10
+
   validates :title, presence: true, length: { maximum: 180 }, allow_blank: false
   validate :end_date_is_after_start_date
 
