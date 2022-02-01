@@ -9,8 +9,38 @@
 ## Endpoints
 
 POST /goals
+
+```
+curl --location --request POST 'http://localhost:3000/goals' \
+--header 'Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDM3NTk0Mjh9.YZ79RMFWwD7-u3V287uSQmC0KnBvowoPilNBntYZVZY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "goal": {
+        "title": "Test"
+    }
+}'
+```
+
 POST /goals/:id/key_results
+
+```
+curl --location --request POST 'http://localhost:3000/goals/1/key_results' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDM3NTk0Mjh9.YZ79RMFWwD7-u3V287uSQmC0KnBvowoPilNBntYZVZY' \
+--data-raw '{
+    "key_result": {
+        "title": "Test"
+    }
+}'
+```
+
 GET /goals
+
+```
+curl --location --request GET 'http://localhost:3000/goals?page=1' \
+--header 'Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDM3NTk0Mjh9.YZ79RMFWwD7-u3V287uSQmC0KnBvowoPilNBntYZVZY' \
+--header 'Content-Type: application/json'
+```
 
 ## Authentication
 
