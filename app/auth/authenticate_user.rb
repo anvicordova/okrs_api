@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AuthenticateUser
+  prepend SimpleCommand
+
   def initialize(username, password)
     @username = username
     @password = password
