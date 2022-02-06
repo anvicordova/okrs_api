@@ -8,13 +8,11 @@ development:
   database: development
   timeout: 5000
   host: postgres
-  username: postgres
-  password: postgres
   port: 5432
 
 test:
   <<: *default
-  database: development
+  database: test
   timeout: 5000
   host: localhost
   port: 5432
