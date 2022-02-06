@@ -10,6 +10,8 @@ class Goal < ApplicationRecord
 
   belongs_to :owner, class_name: "User"
 
+  accepts_nested_attributes_for :key_results
+
   def progress_percentage
     progress * 100
   end

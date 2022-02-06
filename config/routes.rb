@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :goals, only: [:index, :create] do
+    post :bulk, on: :collection
     resources :key_results, only: [:create]
   end
 
